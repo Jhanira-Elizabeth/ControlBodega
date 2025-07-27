@@ -1,0 +1,25 @@
+
+@model ControlBodega.Models.Planta
+@{
+    ViewData["Title"] = "Detalles de Planta";
+}
+<link rel="stylesheet" href="~/css/planta-dashboard.css" />
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow dashboard-card">
+                <div class="card-header bg-info text-white fw-bold">Detalles de Planta</div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">Nombre</dt>
+                        <dd class="col-sm-8">@Model.NPlanta</dd>
+                    </dl>
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-outline-secondary">Volver</a>
+                        <a asp-action="Edit" asp-route-id="@Model.IdPlanta" class="btn btn-primary">Editar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

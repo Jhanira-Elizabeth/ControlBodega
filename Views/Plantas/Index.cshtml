@@ -1,0 +1,26 @@
+@model IEnumerable<ControlBodega.Models.Planta>
+@{
+    ViewData["Title"] = "Planta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/planta-dashboard.css" />
+
+<div class="dashboard-header">
+    <h2>Planta</h2>
+    <a asp-action="Create" class="btn btn-primary shadow">+ Nueva Planta</a>
+</div>
+<div class="dashboard-planta">
+    @foreach (var item in Model)
+    {
+        <div class="dashboard-card">
+            <div class="card-title">
+                <i class="bi bi-flower1" style="font-size:1.5rem;color:#6366f1;"></i> @item.NPlanta
+            </div>
+            <div class="card-actions">
+                <a asp-action="Edit" asp-route-id="@item.IdPlanta" class="btn btn-outline-primary"><i class="bi bi-pencil"></i> Editar</a>
+                <a asp-action="Details" asp-route-id="@item.IdPlanta" class="btn btn-outline-info"><i class="bi bi-info-circle"></i> Detalles</a>
+                <a asp-action="Delete" asp-route-id="@item.IdPlanta" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Eliminar</a>
+            </div>
+        </div>
+    }
+</div>

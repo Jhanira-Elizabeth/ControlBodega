@@ -1,0 +1,28 @@
+@model IEnumerable<ControlBodega.Models.Ingreso>
+<link rel="stylesheet" href="~/css/planta-dashboard.css" />
+@{
+    ViewData["Title"] = "Ingresos";
+}
+<div class="dashboard-header">
+    <h2>Ingresos</h2>
+    <a asp-action="Create" class="btn btn-primary shadow">+ Nuevo Ingreso</a>
+</div>
+<div class="dashboard-planta">
+    @foreach (var item in Model)
+    {
+        <div class="dashboard-card">
+            <div class="card-title">
+                <i class="bi bi-arrow-down-circle" style="font-size:1.5rem;color:#6366f1;"></i> @item.Producto
+            </div>
+            <div><b>Medida:</b> @item.Medida</div>
+            <div><b>Cantidad:</b> @item.Cantidad</div>
+            <div><b>Fecha:</b> @item.Fecha.ToString("dd/MM/yyyy")</div>
+            <div><b>Planta:</b> @item.Planta?.NPlanta</div>
+            <div class="card-actions">
+                <a asp-action="Edit" asp-route-id="@item.IdIngreso" class="btn btn-outline-primary"><i class="bi bi-pencil"></i> Editar</a>
+                <a asp-action="Details" asp-route-id="@item.IdIngreso" class="btn btn-outline-info"><i class="bi bi-info-circle"></i> Detalles</a>
+                <a asp-action="Delete" asp-route-id="@item.IdIngreso" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Eliminar</a>
+            </div>
+        </div>
+    }
+</div>

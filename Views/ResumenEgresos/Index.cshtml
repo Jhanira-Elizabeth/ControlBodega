@@ -1,0 +1,106 @@
+@model ControlBodega.Models.ResumenEgresoViewModel
+<link rel="stylesheet" href="~/css/planta-dashboard.css" />
+@{
+    ViewData["Title"] = "Resumen de Egresos";
+}
+<div class="container py-4">
+    <h2 class="fw-bold mb-4">Resumen de Egresos</h2>
+    <form asp-action="Index" method="post" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <label for="IdPlanta" class="form-label">Planta</label>
+            <select asp-for="IdPlanta" asp-items="ViewBag.Planta" class="form-select"></select>
+        </div>
+        <div class="col-md-3">
+            <label for="FechaInicio" class="form-label">Desde</label>
+            <input asp-for="FechaInicio" type="date" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label for="FechaFin" class="form-label">Hasta</label>
+            <input asp-for="FechaFin" type="date" class="form-control" />
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+        </div>
+    </form>
+
+    <h4 class="mt-4">Egresos</h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var e in Model.Egresos)
+            {
+                <tr>
+                    <td>@e.Fecha.ToString("dd/MM/yyyy")</td>
+                    <td>@e.Producto</td>
+                    <td>@e.Cantidad</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-end fw-bold">Total Egresos:</td>
+                <td class="fw-bold">@Model.TotalEgresos</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h4 class="mt-4">Egresos Alimentación</h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ea in Model.EgresosAlimentacion)
+            {
+                <tr>
+                    <td>@ea.Fecha.ToString("dd/MM/yyyy")</td>
+                    <td>@ea.Producto</td>
+                    <td>@ea.Cantidad</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-end fw-bold">Total Alimentación:</td>
+                <td class="fw-bold">@Model.TotalEgresosAlimentacion</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h4 class="mt-4">Consumos</h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model.Consumos)
+            {
+                <tr>
+                    <td>@c.Fecha.ToString("dd/MM/yyyy")</td>
+                    <td>@c.Producto</td>
+                    <td>@c.Cantidad</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-end fw-bold">Total Consumos:</td>
+                <td class="fw-bold">@Model.TotalConsumos</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

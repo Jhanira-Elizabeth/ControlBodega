@@ -1,0 +1,66 @@
+@model ControlBodega.Models.Consumo
+<link rel="stylesheet" href="~/css/planta-dashboard.css" />
+@{
+    ViewData["Title"] = "Editar Consumo";
+}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card shadow dashboard-card">
+                <div class="card-header bg-warning text-dark fw-bold">Editar Consumo</div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <input type="hidden" asp-for="IdConsumo" />
+                        <div class="mb-3">
+                            <label asp-for="IdEgreso" class="form-label">Egreso</label>
+                            <select asp-for="IdEgreso" class="form-select" asp-items="ViewBag.IdEgreso"></select>
+                            <span asp-validation-for="IdEgreso" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Producto" class="form-label"></label>
+                            <input asp-for="Producto" class="form-control" />
+                            <span asp-validation-for="Producto" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Medida" class="form-label"></label>
+                            <input asp-for="Medida" class="form-control" />
+                            <span asp-validation-for="Medida" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Fecha" class="form-label"></label>
+                            <input asp-for="Fecha" class="form-control" type="date" />
+                            <span asp-validation-for="Fecha" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Hora" class="form-label"></label>
+                            <input asp-for="Hora" class="form-control" />
+                            <span asp-validation-for="Hora" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Tanque" class="form-label"></label>
+                            <input asp-for="Tanque" class="form-control" />
+                            <span asp-validation-for="Tanque" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Poblacion" class="form-label"></label>
+                            <input asp-for="Poblacion" class="form-control" />
+                            <span asp-validation-for="Poblacion" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Estadio" class="form-label"></label>
+                            <input asp-for="Estadio" class="form-control" />
+                            <span asp-validation-for="Estadio" class="text-danger"></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary">Volver</a>
+                            <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

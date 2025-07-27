@@ -1,0 +1,33 @@
+@model IEnumerable<ControlBodega.Models.EgresoAlimentacion>
+<link rel="stylesheet" href="~/css/planta-dashboard.css" />
+@{
+    ViewData["Title"] = "Egresos Alimentación";
+}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold">Egresos Alimentación</h2>
+        <a asp-action="Create" class="btn btn-success">Nuevo Egreso Alimentación</a>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card dashboard-card shadow">
+                    <div class="card-header bg-primary text-white fw-bold">
+                        @item.Planta?.NPlanta
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Fecha.ToString("dd/MM/yyyy")</h5>
+                        <p class="card-text"><strong>Responsable:</strong> @item.Responsable</p>
+                        <p class="card-text"><strong>Producto:</strong> @item.Producto</p>
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Details" asp-route-id="@item.IdEgresoA" class="btn btn-info btn-sm">Detalles</a>
+                            <a asp-action="Edit" asp-route-id="@item.IdEgresoA" class="btn btn-warning btn-sm">Editar</a>
+                            <a asp-action="Delete" asp-route-id="@item.IdEgresoA" class="btn btn-danger btn-sm">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

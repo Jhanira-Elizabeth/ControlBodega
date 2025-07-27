@@ -1,0 +1,15 @@
+.env
+bin/
+obj/
+wwwroot/
+*.user
+*.suo
+*.vs/
+.vscode/
+*.db
+*.sqlite
+*.log
+*.DS_Store
+node_modules/
+appsettings.Development.json
+appsettings.Local.json

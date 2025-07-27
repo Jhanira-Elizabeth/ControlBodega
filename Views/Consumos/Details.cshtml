@@ -1,0 +1,38 @@
+@model ControlBodega.Models.Consumo
+<link rel="stylesheet" href="~/css/planta-dashboard.css" />
+@{
+    ViewData["Title"] = "Detalles de Consumo";
+}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card shadow dashboard-card">
+                <div class="card-header bg-info text-white fw-bold">Detalles de Consumo</div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">Egreso</dt>
+                        <dd class="col-sm-8">@Model.Egreso?.Producto</dd>
+                        <dt class="col-sm-4">Producto</dt>
+                        <dd class="col-sm-8">@Model.Producto</dd>
+                        <dt class="col-sm-4">Medida</dt>
+                        <dd class="col-sm-8">@Model.Medida</dd>
+                        <dt class="col-sm-4">Fecha</dt>
+                        <dd class="col-sm-8">@Model.Fecha.ToString("dd/MM/yyyy")</dd>
+                        <dt class="col-sm-4">Hora</dt>
+                        <dd class="col-sm-8">@Model.Hora</dd>
+                        <dt class="col-sm-4">Tanque</dt>
+                        <dd class="col-sm-8">@Model.Tanque</dd>
+                        <dt class="col-sm-4">Población</dt>
+                        <dd class="col-sm-8">@Model.Poblacion</dd>
+                        <dt class="col-sm-4">Estadio</dt>
+                        <dd class="col-sm-8">@Model.Estadio</dd>
+                    </dl>
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-outline-secondary">Volver</a>
+                        <a asp-action="Edit" asp-route-id="@Model.IdConsumo" class="btn btn-primary">Editar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

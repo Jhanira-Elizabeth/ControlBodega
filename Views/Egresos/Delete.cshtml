@@ -1,0 +1,40 @@
+@model ControlBodega.Models.Egreso
+<link rel="stylesheet" href="~/css/planta-dashboard.css" />
+@{
+    ViewData["Title"] = "Eliminar Egreso";
+}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card shadow dashboard-card">
+                <div class="card-header bg-danger text-white fw-bold">Eliminar Egreso</div>
+                <div class="card-body">
+                    <h5>¿Estás seguro que deseas eliminar este egreso?</h5>
+                    <dl class="row">
+                        <dt class="col-sm-4">Producto</dt>
+                        <dd class="col-sm-8">@Model.Producto</dd>
+                        <dt class="col-sm-4">Medida</dt>
+                        <dd class="col-sm-8">@Model.Medida</dd>
+                        <dt class="col-sm-4">Cantidad</dt>
+                        <dd class="col-sm-8">@Model.Cantidad</dd>
+                        <dt class="col-sm-4">Fecha</dt>
+                        <dd class="col-sm-8">@Model.Fecha.ToString("dd/MM/yyyy")</dd>
+                        <dt class="col-sm-4">Responsable</dt>
+                        <dd class="col-sm-8">@Model.Responsable</dd>
+                        <dt class="col-sm-4">Tipo</dt>
+                        <dd class="col-sm-8">@Model.Tipo</dd>
+                        <dt class="col-sm-4">Planta</dt>
+                        <dd class="col-sm-8">@Model.Planta?.NPlanta</dd>
+                    </dl>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="IdEgreso" />
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

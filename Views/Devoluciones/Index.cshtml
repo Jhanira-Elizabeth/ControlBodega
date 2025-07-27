@@ -1,0 +1,40 @@
+@model IEnumerable<ControlBodega.Models.Devolucion>
+@{
+    ViewData["Title"] = "Devoluciones";
+}
+<h1 class="mb-4">Devoluciones</h1>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Nueva Devolución</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ID Egreso</th>
+            <th>Producto</th>
+            <th>Planta</th>
+            <th>Cantidad</th>
+            <th>Fecha Devolución</th>
+            <th>Motivo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.IdDevolucion</td>
+            <td>@item.IdEgreso</td>
+            <td>@item.Producto</td>
+            <td>@item.Planta?.NPlanta</td>
+            <td>@item.Cantidad</td>
+            <td>@item.FechaDevolucion.ToShortDateString()</td>
+            <td>@item.Motivo</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDevolucion">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDevolucion">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdDevolucion">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

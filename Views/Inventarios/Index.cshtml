@@ -1,0 +1,27 @@
+@model IEnumerable<ControlBodega.Models.Inventario>
+<link rel="stylesheet" href="~/css/planta-dashboard.css" />
+@{
+    ViewData["Title"] = "Inventario";
+}
+<div class="dashboard-header">
+    <h2>Inventario</h2>
+    <a asp-action="Create" class="btn btn-primary shadow">+ Nuevo Producto</a>
+</div>
+<div class="dashboard-planta">
+    @foreach (var item in Model)
+    {
+        <div class="dashboard-card">
+            <div class="card-title">
+                <i class="bi bi-box-seam" style="font-size:1.5rem;color:#6366f1;"></i> @item.Producto
+            </div>
+            <div><b>Medida:</b> @item.Medida</div>
+            <div><b>Precio:</b> @String.Format("${0:0.00}", item.Precio)</div>
+            <div><b>Planta:</b> @item.Planta?.NPlanta</div>
+            <div class="card-actions">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="bi bi-pencil"></i> Editar</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info"><i class="bi bi-info-circle"></i> Detalles</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Eliminar</a>
+            </div>
+        </div>
+    }
+</div>

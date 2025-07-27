@@ -1,0 +1,51 @@
+@model ControlBodega.Models.Ingreso
+<link rel="stylesheet" href="~/css/planta-dashboard.css" />
+@{
+    ViewData["Title"] = "Editar Ingreso";
+}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card shadow dashboard-card">
+                <div class="card-header bg-warning text-dark fw-bold">Editar Ingreso</div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <input type="hidden" asp-for="IdIngreso" />
+                        <div class="mb-3">
+                            <label asp-for="Producto" class="form-label"></label>
+                            <input asp-for="Producto" class="form-control" />
+                            <span asp-validation-for="Producto" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Medida" class="form-label"></label>
+                            <input asp-for="Medida" class="form-control" />
+                            <span asp-validation-for="Medida" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Cantidad" class="form-label"></label>
+                            <input asp-for="Cantidad" class="form-control" />
+                            <span asp-validation-for="Cantidad" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Fecha" class="form-label"></label>
+                            <input asp-for="Fecha" class="form-control" type="date" />
+                            <span asp-validation-for="Fecha" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="IdPlanta" class="form-label">Planta</label>
+                            <select asp-for="IdPlanta" class="form-select" asp-items="ViewBag.IdPlanta"></select>
+                            <span asp-validation-for="IdPlanta" class="text-danger"></span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-outline-secondary">Volver</a>
+                            <button type="submit" class="btn btn-warning">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
